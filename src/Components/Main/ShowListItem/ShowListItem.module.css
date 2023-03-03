@@ -1,0 +1,41 @@
+.showList{
+    display: flex;
+    width: 40vw;
+    min-height: 4vh;
+    background-color: white;
+    align-items: center; 
+    border-bottom: 2px solid gray;
+    word-wrap:break-word;
+    overflow: visible;
+}
+
+.toggleCheck{
+    width: 8%;
+    text-align: center;
+}
+
+.showElement{
+    visibility: visible;
+}
+
+.hideElement{
+    visibility: hidden;
+}
+
+.item{
+    display: flex;
+    align-items: center;
+    width: 90%;
+    align-self: stretch;
+    word-wrap: break-word;
+}
+
+.deleteButton{
+    color: red;
+    float: right;
+    background: none;
+    border: none;
+    height: 90%;
+}
+
+

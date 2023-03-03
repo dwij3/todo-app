@@ -1,0 +1,70 @@
+.filterList{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: aliceblue;
+    width: 40vw;
+    height: 4vh;
+}
+
+.filterButton{
+      padding: 10px; 
+}
+
+.filterAllTask{
+    background: none;
+    margin: 0 5px;
+    border: none;
+    font-size: smaller;
+}
+
+.filterActiveTask{
+    background: none;
+    margin: 0 5px;
+    border: none;
+    font-size: smaller;
+}
+
+.filterCompletedTask{
+    background: none;
+    margin: 0 5px;
+    border: none;
+    font-size: smaller;
+}
+
+.filterAllTask:hover{
+    border: 1px ridge red; 
+    background: none;
+    cursor: pointer;
+    font-size: smaller;
+}
+
+.filterActiveTask:hover{
+    border: 1px ridge red;  
+    background-color: transparent;
+    font-size: smaller;  
+}
+
+.filterCompletedTask:hover{
+    border: 1px ridge red;  
+    background-color: transparent;  
+    font-size: smaller; 
+}
+
+.clearComplete{
+    background: none;
+    border: none;
+}
+
+.clearComplete:hover{
+    border-bottom: 2px ridge;
+}
+
+.showElement{
+    visibility: visible;
+}
+
+.hideElement{
+    visibility: hidden;
+}
+

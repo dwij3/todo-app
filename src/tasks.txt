@@ -1,0 +1,52 @@
+Header Component: (TODOS)
+
+<MAIN>
+<INPUT>
+
+</INPUT>
+<ITEM>
+<FILTER>
+</MAIN>
+
+
+// not updating in localstorage after update using
+
+functionality:
+
+1.add item:
+2.delete item
+3.check or uncheck item
+4.select all 
+5.all
+
+
+
+// state structure 
+
+const DISPLAY_TODO_TYPE = {
+    ALL:"ALL",
+    ACTIVE:"ACTIVE",
+    COMPLETED:"COMPLETED"
+}
+
+todo == stores all the todo list 
+displayTodoType = DISPLAY_TODO_TYPE.ALL;
+
+onButtonClick => update displayTodoType
+
+const filter = (todo)=>{
+    if(displayTodoType==ALL) return true;
+    else if(displayTodoType==ACTIVE) return !todo.isCompleted
+    else if(displayTodoType===COMPLETED) return todo.isCompleted
+}
+
+const tobedisplayedTodo = todo.filter(filter)
+
+render tobedisplayedTodo;
+
+
+Upcoming Task:
+1. clear css
+2. naming convension 
+3. Content edit
+3. all/Active/Completed state should be preserved when refresh

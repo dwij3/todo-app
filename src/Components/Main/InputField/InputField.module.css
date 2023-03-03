@@ -1,0 +1,38 @@
+.inputContainer{
+    width: 40vw;
+    height: 5vh;
+    border-bottom: 2px solid gray;
+    background-color: white;
+    display: flex;
+}
+
+.inputField{
+    flex: auto;
+    font-size: larger;
+    padding: 0 5px;
+    font-size: 1.5em;
+    border: none;
+}
+
+.inputField:focus{
+    outline: none;
+}
+
+.selectToggle{
+    width: 8%;
+    display: grid;
+    place-content: center;
+    /* padding: auto 40%; */
+}
+
+.selectToggle:hover{
+    cursor: pointer;
+}
+
+.showElement{
+    visibility: visible;
+}
+
+.hideElement{
+    visibility: hidden;
+}
