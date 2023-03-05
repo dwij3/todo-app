@@ -1,70 +1,82 @@
-.filterList{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: aliceblue;
-    width: 40vw;
-    height: 4vh;
+.filterList {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: aliceblue;
+  width: 500px;
+  height: 4vh;
+  padding: 5px;
 }
 
-.filterButton{
-      padding: 10px; 
+.filterButton {
+  padding: 10px;
 }
 
-.filterAllTask{
-    background: none;
-    margin: 0 5px;
-    border: none;
-    font-size: smaller;
+.filterAllTask {
+  background: none;
+  margin: 0 5px;
+  border: none;
+  font-size: smaller;
+  font-size: 0.7em;
 }
 
-.filterActiveTask{
-    background: none;
-    margin: 0 5px;
-    border: none;
-    font-size: smaller;
+.filterActiveTask {
+  background: none;
+  margin: 0 5px;
+  border: none;
+  font-size: smaller;
+  font-size: 0.7em;
 }
 
-.filterCompletedTask{
-    background: none;
-    margin: 0 5px;
-    border: none;
-    font-size: smaller;
+.filterCompletedTask {
+  background: none;
+  margin: 0 5px;
+  border: none;
+  font-size: smaller;
+  font-size: 0.7em;
 }
 
-.filterAllTask:hover{
-    border: 1px ridge red; 
-    background: none;
-    cursor: pointer;
-    font-size: smaller;
+.filterAllTask:hover {
+  border: 1px ridge red;
+  background: none;
+  cursor: pointer;
+  font-size: smaller;
+  font-size: 0.7em;
 }
 
-.filterActiveTask:hover{
-    border: 1px ridge red;  
-    background-color: transparent;
-    font-size: smaller;  
+.filterActiveTask:hover {
+  border: 1px ridge red;
+  background-color: transparent;
+  font-size: smaller;
+  font-size: 0.7em;
 }
 
-.filterCompletedTask:hover{
-    border: 1px ridge red;  
-    background-color: transparent;  
-    font-size: smaller; 
+.activeTask {
+  font-size: 0.6em;
 }
 
-.clearComplete{
-    background: none;
-    border: none;
+.filterCompletedTask:hover {
+  border: 1px ridge red;
+  background-color: transparent;
+  font-size: smaller;
+  font-size: 0.7em;
 }
 
-.clearComplete:hover{
-    border-bottom: 2px ridge;
+.clearComplete {
+  background: none;
+  border: none;
+  font-size: 0.7em;
 }
 
-.showElement{
-    visibility: visible;
+.clearComplete:hover {
+  border-bottom: 2px ridge;
 }
 
-.hideElement{
-    visibility: hidden;
+.showElement {
+  visibility: visible;
 }
 
+.hideElement {
+  visibility: hidden;
+}

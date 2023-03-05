@@ -1,41 +1,44 @@
-.showList{
-    display: flex;
-    width: 40vw;
-    min-height: 4vh;
-    background-color: white;
-    align-items: center; 
-    border-bottom: 2px solid gray;
-    word-wrap:break-word;
-    overflow: visible;
+.showList {
+  display: flex;
+  width: 500px;
+  min-height: 4vh;
+  background-color: white;
+  align-items: center;
+  border-bottom: 2px solid gray;
+  word-wrap: break-word;
+  overflow: visible;
 }
 
-.toggleCheck{
-    width: 8%;
-    text-align: center;
+.toggleCheck {
+  width: 8%;
+  text-align: center;
 }
 
-.showElement{
-    visibility: visible;
+.showElement {
+  visibility: visible;
 }
 
-.hideElement{
-    visibility: hidden;
+.hideElement {
+  visibility: hidden;
 }
 
-.item{
-    display: flex;
-    align-items: center;
-    width: 90%;
-    align-self: stretch;
-    word-wrap: break-word;
+.item {
+  display: flex;
+  align-items: center;
+  width: 90%;
+  align-self: stretch;
+  word-wrap: break-word;
+  word-break: break-all;
+  padding: 0px 0px 0px 5px;
+  margin: 5px;
 }
 
-.deleteButton{
-    color: red;
-    float: right;
-    background: none;
-    border: none;
-    height: 90%;
+.deleteButton {
+  color: red;
+  float: right;
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  height: 100%;
+  padding: 10px;
 }
-
-

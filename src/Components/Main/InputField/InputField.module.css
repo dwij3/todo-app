@@ -1,38 +1,39 @@
-.inputContainer{
-    width: 40vw;
-    height: 5vh;
-    border-bottom: 2px solid gray;
-    background-color: white;
-    display: flex;
+.inputContainer {
+  width: 500px;
+  height: 5vh;
+  border-bottom: 2px solid gray;
+  background-color: white;
+  display: flex;
 }
 
-.inputField{
-    flex: auto;
-    font-size: larger;
-    padding: 0 5px;
-    font-size: 1.5em;
-    border: none;
+.inputField {
+  flex: auto;
+  font-size: larger;
+  padding: 0 5px;
+  font-size: 1.5em;
+  border: none;
+  margin-left: 10px;
 }
 
-.inputField:focus{
-    outline: none;
+.inputField:focus {
+  outline: none;
 }
 
-.selectToggle{
-    width: 8%;
-    display: grid;
-    place-content: center;
-    /* padding: auto 40%; */
+.selectToggle {
+  width: 8%;
+  display: grid;
+  place-content: center;
+  /* padding: auto 40%; */
 }
 
-.selectToggle:hover{
-    cursor: pointer;
+.selectToggle:hover {
+  cursor: pointer;
 }
 
-.showElement{
-    visibility: visible;
+.showElement {
+  visibility: visible;
 }
 
-.hideElement{
-    visibility: hidden;
+.hideElement {
+  visibility: hidden;
 }

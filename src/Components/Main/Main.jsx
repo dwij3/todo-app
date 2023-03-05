@@ -1,8 +1,8 @@
-import Filters from "./Filters/Filters";
-import InputField from "./InputField/InputField";
-import ShowListItem from "./ShowListItem/ShowListItem";
-import styles from "./Main.module.css";
-import { useMemo, useState, useEffect } from "react";
+import Filters from './Filters/Filters';
+import InputField from './InputField/InputField';
+import ShowListItem from './ShowListItem/ShowListItem';
+import styles from './Main.module.css';
+import { useMemo, useState, useEffect } from 'react';
 
 // const dummyArray = [
 //     {
@@ -21,16 +21,16 @@ import { useMemo, useState, useEffect } from "react";
 // ];
 
 const TYPE = {
-  ALL: "All",
-  ACTIVE: "Active",
-  COMPLETE: "Complete",
+  ALL: 'All',
+  ACTIVE: 'Active',
+  COMPLETE: 'Complete',
 };
-
 
 export default function Main() {
   //getting todo list from localstorage
+  //used arrow function initialization for lazy loading
   const [todo, setTodo] = useState(() => {
-    const savedTodos = localStorage.getItem("todos");
+    const savedTodos = localStorage.getItem('todos');
     if (savedTodos) {
       return JSON.parse(savedTodos);
     } else {
@@ -42,17 +42,14 @@ export default function Main() {
   //else if filter Button Active is clicked then displayTodoList = "Active"
   //else displayTododList="Completed"
 
-
-  const [displayTodoList, setDisplayTodoList] = useState({type:'All'});
+  const [displayTodoList, setDisplayTodoList] = useState({ type: 'All' });
 
   //getting next-available id from local storage
-  let nextId = localStorage.getItem("id")
-    ? JSON.parse(localStorage.getItem("id"))
-    : 0;
+  let nextId = localStorage.getItem('id') ? JSON.parse(localStorage.getItem('id')) : 0;
 
   //if todo-list  changes then update the localstorage
   useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(todo));
+    localStorage.setItem('todos', JSON.stringify(todo));
   }, [todo]);
 
   //Adding Task to TODO list
@@ -65,9 +62,8 @@ export default function Main() {
         isComplete: false,
       },
     ]);
-    localStorage.setItem("id", JSON.stringify(nextId));
-    console.log("Adding task");
-    setDisplayTodoList({type:TYPE.ALL});
+    localStorage.setItem('id', JSON.stringify(nextId));
+    setDisplayTodoList({ type: TYPE.ALL });
   }
 
   //Deleting task from todo list
@@ -89,10 +85,7 @@ export default function Main() {
   }
 
   //activeTaskLength is number of tasks that are not completed.
-  const activeTaskLength = useMemo(
-    () => todo.filter((task) => task.isComplete === false).length,
-    [todo]
-  );
+  const activeTaskLength = useMemo(() => todo.filter((task) => task.isComplete === false).length, [todo]);
 
   //if all the task are completed then toggleComplete function makes all task incomplete
   //otherwise Complete all Task:
@@ -120,14 +113,7 @@ export default function Main() {
 
   function displayAllTaks() {
     const allTask = todo.map((task) => {
-      return (
-        <ShowListItem
-          key={task.id}
-          item={task}
-          onDeleteTask={handleDeleteTask}
-          onChangeTask={handleChangeTask}
-        />
-      );
+      return <ShowListItem key={task.id} item={task} onDeleteTask={handleDeleteTask} onChangeTask={handleChangeTask} />;
     });
 
     return allTask;
@@ -137,14 +123,7 @@ export default function Main() {
     let activeTask = todo.filter((task) => task.isComplete === false);
 
     activeTask = activeTask.map((task) => {
-      return (
-        <ShowListItem
-          key={task.id}
-          item={task}
-          onDeleteTask={handleDeleteTask}
-          onChangeTask={handleChangeTask}
-        />
-      );
+      return <ShowListItem key={task.id} item={task} onDeleteTask={handleDeleteTask} onChangeTask={handleChangeTask} />;
     });
 
     return activeTask;
@@ -154,65 +133,60 @@ export default function Main() {
     let completedTask = todo.filter((task) => task.isComplete === true);
 
     completedTask = completedTask.map((task) => {
-      return (
-        <ShowListItem
-          key={task.id}
-          item={task}
-          onDeleteTask={handleDeleteTask}
-          onChangeTask={handleChangeTask}
-        />
-      );
+      return <ShowListItem key={task.id} item={task} onDeleteTask={handleDeleteTask} onChangeTask={handleChangeTask} />;
     });
 
     return completedTask;
   }
 
   //Task Items which will be displayed in screen
-  let filterType= displayTodoList.type;
+  let filterType = displayTodoList.type;
   let listItem;
-  switch(filterType){
-    case TYPE.ALL:{
-        listItem = displayAllTaks();
-        break;
+  switch (filterType) {
+    case TYPE.ALL: {
+      listItem = displayAllTaks();
+      break;
     }
 
-    case TYPE.ACTIVE:{
-        listItem = displayActiveTask();
-        break;
+    case TYPE.ACTIVE: {
+      listItem = displayActiveTask();
+      break;
     }
 
-    case TYPE.COMPLETE:{
-        listItem = displayCompletedtask();
-        break;
+    case TYPE.COMPLETE: {
+      listItem = displayCompletedtask();
+      break;
     }
 
-    default:{
-        listItem=<div>OOPS!</div>
-    }
-  }
-
-  function handleDisplayType(displayType){
-    if(displayType === "ALL"){
-        setDisplayTodoList({type: TYPE.ALL});
-    }else if(displayType === "ACTIVE"){
-        setDisplayTodoList({type: TYPE.ACTIVE});
-    }else{
-        setDisplayTodoList({type: TYPE.COMPLETE});
+    default: {
+      listItem = <div>OOPS!</div>;
     }
   }
 
-//   if(listItem === displayTodoList.)
+  function handleDisplayType(displayType) {
+    if (displayType === 'ALL') {
+      setDisplayTodoList({ type: TYPE.ALL });
+    } else if (displayType === 'ACTIVE') {
+      setDisplayTodoList({ type: TYPE.ACTIVE });
+    } else {
+      setDisplayTodoList({ type: TYPE.COMPLETE });
+    }
+  }
+
+  //   if(listItem === displayTodoList.)
 
   return (
     <div className={styles.container}>
-      <InputField onAddTask={handleAddTask} onToggleComplete={toggleComplete} isTaskEmpty={todo.length === 0}/>
+      <InputField onAddTask={handleAddTask} onToggleComplete={toggleComplete} isTaskEmpty={todo.length === 0} />
       {listItem}
-     {todo.length>0 &&  <Filters
-        activeTaskLength={activeTaskLength}
-        onClearComplete={deleteCompletedTask}
-        handleDisplayType={handleDisplayType}
-        showClearComplete={(activeTaskLength === todo.length) ? false : true}
-      />}
+      {todo.length > 0 && (
+        <Filters
+          activeTaskLength={activeTaskLength}
+          onClearComplete={deleteCompletedTask}
+          handleDisplayType={handleDisplayType}
+          showClearComplete={activeTaskLength === todo.length ? false : true}
+        />
+      )}
     </div>
   );
 }
