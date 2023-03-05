@@ -48,5 +48,5 @@ render tobedisplayedTodo;
 Upcoming Task:
 1. clear css
 2. naming convension 
-3. Content edit
+3. Content edit 
 3. all/Active/Completed state should be preserved when refresh
