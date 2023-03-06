@@ -1,19 +1,24 @@
 import Filters from './components/Filters';
-import AddTask from './components/AddTask';
-import ShowTaskList from './components/ShowTaskList';
+import AddTodo from './components/AddTodo';
+import TodoList from './components/TodoList';
 import styles from './Main.module.css';
-import useDisplayTodoList from './hooks/useDisplayTodoList';
-
-
+import useTodo from './hooks/useTodos';
 
 const Main = () => {
-  const { displaytodo: todoList, onAction, activeTaskCount, todoStatus, todosLength } = useDisplayTodoList();
+  const { onAction, filteredtodo, todosLength, activeTodoCount, todoStatus } = useTodo();
 
   return (
     <div className={styles.container}>
-      <AddTask onAction={onAction} todosLength={todosLength} activeTaskCount={activeTaskCount}/>
-      <ShowTaskList taskList={todoList} onAction={onAction} />
-      {todosLength > 0 && <Filters activeTaskCount={activeTaskCount} onAction={onAction} todoStatus={todoStatus} todosLength={todosLength} />}
+      <AddTodo onAction={onAction} todosLength={todosLength} activeTodoCount={activeTodoCount} />
+      <TodoList taskList={filteredtodo} onAction={onAction} />
+      {todosLength > 0 ? (
+        <Filters
+          activeTodoCount={activeTodoCount}
+          onAction={onAction}
+          todoStatus={todoStatus}
+          todosLength={todosLength}
+        />
+      ) : null}
     </div>
   );
 };

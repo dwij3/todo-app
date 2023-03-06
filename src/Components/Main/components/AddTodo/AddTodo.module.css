@@ -1,19 +1,21 @@
 .inputContainer {
   width: 550px;
-  height: 60px;
-  border-bottom: 2px solid gray;
+  height: 56px;
+  border-bottom: 1px solid #e6e6e6;
   background-color: white;
   display: flex;
 }
 
 .inputField {
-  flex: auto;
-  font-size: larger;
-  padding: 0 5px;
-  font-size: 1.5em;
+  flex: 1;
   border: none;
-  margin-left: 10px;
   color: #4D4D4D;
+  height: 80%;
+  align-self: center;
+  font-family: 'Helvetica neue';
+  font-size: 1.3rem;
+  padding-left: 10px;
+  font-weight: 300;
 }
 
 .inputField:focus {
@@ -22,11 +24,12 @@
 
 .selectToggle {
   width: 8%;
-  display: grid;
-  place-content: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   transform: matrix(0,1,-1,0,0,0);
   color: #737373 ;
-  font-size: 1.3em;
+  font-size:  1.8rem;
   user-select: none;
 }
 
@@ -47,8 +50,8 @@
 }
 
 ::placeholder{
-  color:  #777777;;
   font-style: italic;
-  font-weight: lighter;
-  font-size: large;
+  font-size: 1.5rem;
+	font-weight: 300;
+	color: #e6e6e6;
 }

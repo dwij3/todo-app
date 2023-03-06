@@ -1,49 +1,61 @@
-import styles from "./Filters.module.css";
-import { ACTION , FILTER_STATUS } from "../../constants";
-import { useCallback } from "react";
+import styles from './Filters.module.css';
+import { ACTION, FILTER_STATUS } from '../../constants';
+import { useCallback } from 'react';
+import Button  from './Button.jsx/Button';
 
-const Filters = ({ activeTaskCount,onAction , todoStatus , todosLength})=>{
-
-    const changeTodoStatus = useCallback(
-      (status) => {
-        onAction({
-          type:ACTION.CHANGE_TODO_STATUS,
-          status
-        })
-      }
-      ,[onAction]);
-
-
-    const handleDeleteCompletedtask = useCallback(() =>{
+const Filters = ({ activeTodoCount, onAction, todoStatus, todosLength }) => {
+  const changeTodoStatus = useCallback(
+    (status) => {
       onAction({
-        type:ACTION.DELETE_COMPLETED_TASKS
+        type: ACTION.CHANGE_TODO_STATUS,
+        status,
       });
-    },[onAction]);  
+    },
+    [onAction]
+  );
 
-     const clearCompleteClass = (activeTaskCount===todosLength) ? styles.hideElement : styles.showElement;
-     const highlightStatus = styles.highlightStatus;
-    return(
+  const handleDeleteCompletedtask = useCallback(() => {
+    onAction({
+      type: ACTION.DELETE_COMPLETED_TODOS,
+    });
+  }, [onAction]);
+
+  const clearCompleteClass = activeTodoCount === todosLength ? styles.hideElement : styles.showElement;
+  const highlightStatus = styles.highlightStatus;
+
+
+  return (
     <div className={styles.filterList}>
-      <span className={styles.activeTask}>{activeTaskCount} items left</span>
+      <span className={styles.activeTodos}>{activeTodoCount} items left</span>
 
       <span className={styles.filterButton}>
-        <button className={`${styles.filterAllTask} ${(todoStatus===FILTER_STATUS.ALL) ? highlightStatus : ""}`} onClick={() =>  changeTodoStatus(FILTER_STATUS.ALL)}>
+        <Button
+          className={`${styles.filter} ${todoStatus === FILTER_STATUS.ALL ? highlightStatus : ''}`}
+          onClick={() => changeTodoStatus(FILTER_STATUS.ALL)}
+        >
           All
-        </button>
-        <button className={`${styles.filterActiveTask} ${(todoStatus===FILTER_STATUS.ACTIVE)? highlightStatus : ""}`} onClick={() => changeTodoStatus(FILTER_STATUS.ACTIVE)}>
+        </Button>
+        <Button
+          className={`${styles.filter} ${todoStatus === FILTER_STATUS.ACTIVE ? highlightStatus : ''}`}
+          onClick={() => changeTodoStatus(FILTER_STATUS.ACTIVE)}
+        >
           Active
-        </button>
-        <button
-          className={`${styles.filterCompletedTask} ${(todoStatus===FILTER_STATUS.COMPLETE) ? highlightStatus : ""}`}
+        </Button>
+        <Button
+          className={`${styles.filter} ${todoStatus === FILTER_STATUS.COMPLETE ? highlightStatus : ''}`}
           onClick={() => changeTodoStatus(FILTER_STATUS.COMPLETE)}
         >
           Completed
-        </button>
+        </Button>
       </span>
 
-      {<button onClick={handleDeleteCompletedtask} className={`${styles.clearComplete} ${clearCompleteClass}`}>Clear Complete</button>}
+      {
+        <Button onClick={handleDeleteCompletedtask} className={`${styles.clearCompleted} ${clearCompleteClass}`}>
+          Clear Completed
+        </Button>
+      }
     </div>
-    );
-}
+  );
+};
 
 export default Filters;

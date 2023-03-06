@@ -1,5 +1,4 @@
-const DisplayTaskName = ({display , onActive , item , itemStyle , completedTaskStyle}) => {
-    display = 'block';
+const DisplayTodoName = ({ onActive , item , itemStyle , completedTaskStyle}) => {
     return  (
       <div className={`${itemStyle} ${(item.isComplete) ? completedTaskStyle : ""}`} onDoubleClick={onActive}>
         {' '}
@@ -8,4 +7,4 @@ const DisplayTaskName = ({display , onActive , item , itemStyle , completedTaskS
     );
   };
 
-  export default DisplayTaskName;
+  export default DisplayTodoName;

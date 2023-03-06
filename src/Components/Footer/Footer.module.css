@@ -1,0 +1,12 @@
+.Footer{
+    margin: 65px auto 0;
+    color: #bfbfbf;
+    font-size: 12px;
+    text-shadow: 0 1px 0 rgb(255 255 255 / 50%);
+    text-align: center;
+    font-weight: 300;
+}
+
+.createrName{
+    font-weight: 600;
+}
