@@ -1,7 +1,7 @@
 import styles from './Header.module.css';
 
-export default function Header({heading}) {
+export default function Header({title}) {
   return (
-      <h1 className={styles.heading}>{heading}</h1>
+      <h1 className={styles.heading}>{title}</h1>
   );
 }

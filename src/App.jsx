@@ -5,7 +5,7 @@ import Main from './Components/Main';
 function App() {
   return (
     <div className={styles.App}>
-      <Header heading={"todos"}/>
+      <Header title={"todos"}/>
       <Main />
     </div>
   );

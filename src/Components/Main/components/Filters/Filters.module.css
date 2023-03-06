@@ -3,74 +3,84 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: aliceblue;
-  width: 500px;
-  height: 4vh;
+  background-color: #fefefe;
+  width: 550px;
+  height: 40px;
   padding: 5px;
+  color: #777777;
+  border-top: 2px solid gray ;
 }
 
 .filterButton {
   padding: 10px;
+  /* width: 40%; */
 }
 
 .filterAllTask {
   background: none;
   margin: 0 5px;
-  border: none;
-  font-size: smaller;
   font-size: 0.7em;
+  color: #777777;
+  border: 1px ridge transparent;
 }
 
 .filterActiveTask {
   background: none;
   margin: 0 5px;
-  border: none;
-  font-size: smaller;
   font-size: 0.7em;
+  color: #777777;
+  border: 1px ridge transparent;
 }
 
 .filterCompletedTask {
   background: none;
   margin: 0 5px;
-  border: none;
-  font-size: smaller;
   font-size: 0.7em;
+  color: #777777;
+  border: 1px ridge transparent;
 }
 
 .filterAllTask:hover {
-  border: 1px ridge red;
+  border: 1px ridge #f7ebea;
   background: none;
   cursor: pointer;
-  font-size: smaller;
+  
   font-size: 0.7em;
 }
 
 .filterActiveTask:hover {
-  border: 1px ridge red;
+  border: 1px ridge #f7ebea;
   background-color: transparent;
   font-size: smaller;
   font-size: 0.7em;
+  cursor: pointer;
 }
 
 .activeTask {
-  font-size: 0.6em;
+  font-size: 1em;
+  padding-left: 10px;
 }
 
 .filterCompletedTask:hover {
-  border: 1px ridge red;
+  border: 1px ridge #f7ebea;
   background-color: transparent;
   font-size: smaller;
   font-size: 0.7em;
+  cursor: pointer;
 }
 
 .clearComplete {
   background: none;
   border: none;
   font-size: 0.7em;
+  color: #777777;
+  cursor: pointer;
+  padding-right: 10px;
+  border: 1px ridge transparent;
 }
 
 .clearComplete:hover {
-  border-bottom: 2px ridge;
+  border: 1px ridge #f7ebea;
 }
 
 .showElement {
@@ -79,4 +89,9 @@
 
 .hideElement {
   visibility: hidden;
+}
+
+
+.highlightStatus{
+  border:  1px ridge #f6c6c2;
 }

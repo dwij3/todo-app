@@ -1,6 +1,6 @@
 .inputContainer {
-  width: 500px;
-  height: 5vh;
+  width: 550px;
+  height: 60px;
   border-bottom: 2px solid gray;
   background-color: white;
   display: flex;
@@ -13,6 +13,7 @@
   font-size: 1.5em;
   border: none;
   margin-left: 10px;
+  color: #4D4D4D;
 }
 
 .inputField:focus {
@@ -23,7 +24,14 @@
   width: 8%;
   display: grid;
   place-content: center;
-  /* padding: auto 40%; */
+  transform: matrix(0,1,-1,0,0,0);
+  color: #737373 ;
+  font-size: 1.3em;
+  user-select: none;
+}
+
+.toggleColor{
+  color: #e6e6e6;
 }
 
 .selectToggle:hover {
@@ -36,4 +44,11 @@
 
 .hideElement {
   visibility: hidden;
+}
+
+::placeholder{
+  color:  #777777;;
+  font-style: italic;
+  font-weight: lighter;
+  font-size: large;
 }

@@ -1,11 +1,13 @@
 import { useCallback, useState } from 'react';
 import styles from './ShowTaskItem.module.css';
 import { ACTION } from '../../../../constants';
-
+import EditableTaskName  from './components/EditableTask';
+import DisplayTaskName  from './components/DisplayTask';
 const  ShowTaskItem = ({ item, onAction }) => {
 
   const [edit, setEdit] = useState(false);
   const [text, setText] = useState(item.name);
+  const [displayDeleteButton, setDisplayDeleteButton] = useState();
 
   const activateEditMode = useCallback(() =>{
     setEdit(true);
@@ -39,28 +41,43 @@ const  ShowTaskItem = ({ item, onAction }) => {
     });
   },[item.id, onAction]);
 
+  const handleMouseEnter = () => {
+    setDisplayDeleteButton(true);
+  }
+
+  const handleMouseLeave = () => {
+    setDisplayDeleteButton(false);
+  }
+
+
   let editableTaskItem,
     display = 'none';
   const toggleClass = edit ? styles.hideElement : styles.showElement;
   return (
-    <div className={styles.showList}>
+    <div className={styles.showList} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+
+      <div className={styles.toggleCheck}>
       <input
         type="checkbox"
+        id="checkbox"
         onChange={handleToggleCompleteTask}
-        className={`${styles.toggleCheck} ${toggleClass} `}
+        className={`${toggleClass} ${styles.checkboxRound}`}
         checked={item.isComplete}
         style={{ display: { display } }}
       />
+      </div>
+      
+      
 
       {editableTaskItem}
       {
         edit ? 
-        <EditableTaskName display={display} text={text} onChange={handleChangeTaskName} onEdit={handleEditTaskName} /> 
-        : <DisplayTaskName display={display} onActive={activateEditMode} item={item}/>
+        <EditableTaskName display={display} text={text} onChange={handleChangeTaskName} onEdit={handleEditTaskName} itemStyle={styles.item}/> 
+        : <DisplayTaskName display={display} onActive={activateEditMode} item={item} itemStyle={styles.item} completedTaskStyle={styles.completedTask}/>
       }
 
-      <button className={`${styles.deleteButton} ${toggleClass} `} onClick={handleDeleteTask}>
-        ✗
+       <button className={`${styles.deleteButton} ${toggleClass} ${(displayDeleteButton) ? styles.showElement : styles.hideElement}`} onClick={handleDeleteTask}>
+        X
       </button>
     </div>
   );
@@ -68,17 +85,5 @@ const  ShowTaskItem = ({ item, onAction }) => {
 
 export default ShowTaskItem;
 
-const EditableTaskName = ({display , text , onChange ,onEdit}) => {
-  display = 'none'; 
-    return(  <input className={styles.item} value={text} onChange={onChange} onKeyDown={onEdit} />);
-}
 
-const DisplayTaskName = ({display , onActive , item}) => {
-  display = 'block';
-  return  (
-    <div className={styles.item} onDoubleClick={onActive}>
-      {' '}
-      {item.name}{' '}
-    </div>
-  );
-}
+

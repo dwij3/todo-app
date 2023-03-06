@@ -19,6 +19,7 @@ const useDisplayTodoList = () => {
   });
 
   const activeTaskCount = useMemo(() => todoList.filter((task) => task.isComplete === false).length, [todoList]);
+  const todosLength = todoList.length;
 
   useEffect(() => {
     localStorage.setItem('todos', JSON.stringify(todoList));
@@ -73,7 +74,7 @@ const useDisplayTodoList = () => {
             return task;
           }
         });
-
+        console.log(todoList);
         return updatedTodoList;
       });
     },
@@ -133,7 +134,7 @@ const useDisplayTodoList = () => {
     }
   };
 
-  return { displaytodo, onAction, activeTaskCount};
+  return { displaytodo, onAction, activeTaskCount , todosLength , todoStatus};
 };
 
 export default useDisplayTodoList;

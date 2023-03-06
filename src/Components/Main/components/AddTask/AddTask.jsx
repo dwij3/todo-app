@@ -2,7 +2,7 @@ import { useState , useCallback} from 'react';
 import styles from './AddTask.module.css';
 import { ACTION } from '../../constants';
 
-const AddTask = ({ onAction }) => {
+const AddTask = ({ onAction , todosLength ,activeTaskCount}) => {
   const [text, setText] = useState('');
 
   const handleInputChange = useCallback((e) => {
@@ -27,11 +27,11 @@ const AddTask = ({ onAction }) => {
     })
   },[onAction]);
 
- //const classOfSelectToggle = isTaskEmpty ? styles.hideElement : styles.showElement;
- const classOfSelectToggle  = styles.showElement;
+  
+ const selectToggleClass = todosLength>0 ? styles.showElement : styles.hideElement;
   return (
     <div className={styles.inputContainer}>
-      <div className={`${styles.selectToggle} ${classOfSelectToggle}`} onClick={handleToggleCompletedTasks}>
+      <div className={`${styles.selectToggle} ${selectToggleClass}`} onClick={handleToggleCompletedTasks}>
         ❯
       </div>
       <input
