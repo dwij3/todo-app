@@ -24,7 +24,7 @@ const AddTodo = ({ onAction, totalCount, activeTodoCount }) => {
     [onAction, text]
   );
 
-  const ToggleCompletedTodos = useCallback(() => {
+  const toggleCompletedTodos = useCallback(() => {
     onAction({
       type: ACTION.EDIT_TODOS,
       editType: ACTION.TOGGLE
@@ -37,7 +37,7 @@ const AddTodo = ({ onAction, totalCount, activeTodoCount }) => {
     <div className={styles.inputContainer}>
       <div
         className={`${styles.selectToggle} ${selectToggleClass} ${activeTodoCount !== 0 ? toggleColor : ''}`}
-        onClick={ToggleCompletedTodos}
+        onClick={toggleCompletedTodos}
       >
         ❯
       </div>

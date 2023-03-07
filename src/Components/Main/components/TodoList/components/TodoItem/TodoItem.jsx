@@ -31,7 +31,7 @@ const TodoItem = ({ item, onAction }) => {
     [item, onAction, text]
   );
 
-  const ToggleCompleteTodos = useCallback(() => {
+  const toggleCompleteTodos = useCallback(() => {
     onAction({
       type: ACTION.EDIT_TODOS,
       editType:ACTION.EDIT_TODO_ITEM,
@@ -61,7 +61,7 @@ const TodoItem = ({ item, onAction }) => {
         <input
           type="checkbox"
           id="checkbox"
-          onChange={ToggleCompleteTodos}
+          onChange={toggleCompleteTodos}
           className={`${toggleClass} ${styles.checkboxRound}`}
           checked={item.isComplete}
         />
