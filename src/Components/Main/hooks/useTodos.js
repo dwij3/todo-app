@@ -18,7 +18,7 @@ const useTodo = () => {
   }, [todos]);
 
   const activeTodoCount = useMemo(() => todos.filter((todo) => todo.isComplete === false).length, [todos]);
-  const todosCount = useMemo(() => todos.length, [todos.length]);
+  const totalCount = useMemo(() => todos.length, [todos.length]);
 
   const handleAddTodo = useCallback(
     (todoName) => {
@@ -37,7 +37,7 @@ const useTodo = () => {
     [changeTodoStatus]
   );
 
-  const handleDeleteTodo = useCallback((todoIds) => {
+  const handleDeleteTodos = useCallback((todoIds) => {
     setTodo((todos) =>
       todos.filter((todo) => {
         return !todoIds.includes(todo.id);
@@ -45,11 +45,11 @@ const useTodo = () => {
     );
   }, []);
 
-  const handleEditTodo = useCallback((editType , todoList) => {
+  const handleEditTodos = useCallback((editType , updatedTodo) => {
       setTodo( (todos) => todos.map((todo) => {
-        if(editType === "editTodoItem"){
-          if(todo.id === todoList.id){
-            return todoList;
+        if(editType === ACTION.EDIT_TODO_ITEM){
+          if(todo.id === updatedTodo.id){
+            return updatedTodo;
           }else{
             return todo;
           }
@@ -63,10 +63,10 @@ const useTodo = () => {
       }));
   }, [activeTodoCount]);
 
-  const filteredtodo = todos.filter((task) => {
+  const filteredtodo = todos.filter((todo) => {
     if (todoStatus === FILTER_STATUS.ALL) return true;
-    else if (todoStatus === FILTER_STATUS.ACTIVE) return !task.isComplete;
-    else return task.isComplete;
+    else if (todoStatus === FILTER_STATUS.ACTIVE) return !todo.isComplete;
+    else return todo.isComplete;
   });
 
   const onAction = (action) => {
@@ -75,12 +75,12 @@ const useTodo = () => {
         handleAddTodo(action.text);
         break;
 
-      case ACTION.DELETE_TODO:
-        handleDeleteTodo([action.id]);
+      case ACTION.DELETE_TODOS:
+        handleDeleteTodos([action.id]);
         break;
 
-      case ACTION.EDIT_TODO:
-        handleEditTodo(action.editType ,action.changedTask);
+      case ACTION.EDIT_TODOS:
+        handleEditTodos(action.editType ,action.changedTodo);
         break;
 
       case ACTION.DELETE_COMPLETED_TODOS:
@@ -89,7 +89,7 @@ const useTodo = () => {
           .map((todo) => {
             return todo.id;
           });
-        handleDeleteTodo(completedTodos);
+        handleDeleteTodos(completedTodos);
         break;
 
       case ACTION.UPDATE_FILTER:
@@ -101,7 +101,7 @@ const useTodo = () => {
     }
   };
 
-  return {onAction, filteredtodo, todosCount, activeTodoCount, todoStatus};
+  return {onAction, todos:filteredtodo, totalCount, activeTodoCount, todoStatus};
 };
 
 export default useTodo;

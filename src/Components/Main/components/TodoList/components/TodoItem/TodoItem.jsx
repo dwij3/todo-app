@@ -1,13 +1,13 @@
 import { useCallback, useState } from 'react';
 import styles from './TodoItem.module.css';
 import { ACTION } from '../../../../constants';
-import EditableTodoName from './components/EditableTodoName/EditableTodoName';
-import DisplayTodoName from './components/TodoName/TodoName';
+import EditableTodoName from './components/editableTodoName';
+import DisplayTodoName from './components/displayTodoName';
 
 const TodoItem = ({ item, onAction }) => {
   const [edit, setEdit] = useState(false);
   const [text, setText] = useState(item.name);
-  const [displayDeleteButton, setDisplayDeleteButton] = useState();
+  const [displayDeleteButton, setDisplayDeleteButton] = useState(false);
 
   const handleEditMode = useCallback(() => {
     setEdit(true);
@@ -22,9 +22,9 @@ const TodoItem = ({ item, onAction }) => {
       if (e.key === 'Enter') {
         setEdit(false);
         onAction({
-          type: ACTION.EDIT_TODO,
-          editType:"editTodoItem",
-          changedTask: { ...item, name: text },
+          type: ACTION.EDIT_TODOS,
+          editType:ACTION.EDIT_TODO_ITEM,
+          changedTodo: { ...item, name: text },
         });
       }
     },
@@ -33,15 +33,15 @@ const TodoItem = ({ item, onAction }) => {
 
   const ToggleCompleteTodos = useCallback(() => {
     onAction({
-      type: ACTION.EDIT_TODO,
-      editType:"editTodoItem",
-      changedTask: { ...item, isComplete: !item.isComplete },
+      type: ACTION.EDIT_TODOS,
+      editType:ACTION.EDIT_TODO_ITEM,
+      changedTodo: { ...item, isComplete: !item.isComplete },
     });
   }, [item, onAction]);
 
   const handleDeleteTodo = useCallback(() => {
     onAction({
-      type: ACTION.DELETE_TODO,
+      type: ACTION.DELETE_TODOS,
       id: item.id,
     });
   }, [item.id, onAction]);
@@ -68,17 +68,17 @@ const TodoItem = ({ item, onAction }) => {
       </div>
       {edit ? (
         <EditableTodoName
-          text={text}
+          todoName={text}
           onChange={handleChangeTodoName}
           onEdit={handleEditTodoName}
-          itemStyle={styles.item}
+          todoStyle={styles.item}
         />
       ) : (
         <DisplayTodoName
           onActive={handleEditMode}
-          item={item}
-          itemStyle={styles.item}
-          completedTaskStyle={styles.completedTask}
+          todo={item}
+          todoStyle={styles.item}
+          completedTodoStyle={styles.completedTodo}
         />
       )}
 

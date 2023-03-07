@@ -1,11 +1,11 @@
-import TodoItem from "./components/TodoItem";
+import TodoItem from "./components/todoItem";
 
 const TodoList = ({todos,onAction}) => {
     return(
         <>
         {
-            todos.map((task) => {
-                return <TodoItem key={task.id} item={task} onAction={onAction}/>
+            todos.map((todo) => {
+                return <TodoItem key={todo.id} item={todo} onAction={onAction}/>
             })
         }
         </>
