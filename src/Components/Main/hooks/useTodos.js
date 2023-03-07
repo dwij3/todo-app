@@ -47,7 +47,7 @@ const useTodo = () => {
 
   const handleEditTodo = useCallback((editType , todoList) => {
       setTodo( (todos) => todos.map((todo) => {
-        if(editType === ACTION.EDIT_TODO){
+        if(editType === "editTodoItem"){
           if(todo.id === todoList.id){
             return todoList;
           }else{
@@ -80,11 +80,7 @@ const useTodo = () => {
         break;
 
       case ACTION.EDIT_TODO:
-        handleEditTodo(ACTION.EDIT_TODO ,action.changedTask);
-        break;
-
-      case ACTION.TOGGLE:
-        handleEditTodo(ACTION.TOGGLE);
+        handleEditTodo(action.editType ,action.changedTask);
         break;
 
       case ACTION.DELETE_COMPLETED_TODOS:
@@ -96,7 +92,7 @@ const useTodo = () => {
         handleDeleteTodo(completedTodos);
         break;
 
-      case ACTION.CHANGE_TODO_STATUS:
+      case ACTION.UPDATE_FILTER:
         changeTodoStatus(action.status);
         break;
 

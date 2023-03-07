@@ -23,6 +23,7 @@ const TodoItem = ({ item, onAction }) => {
         setEdit(false);
         onAction({
           type: ACTION.EDIT_TODO,
+          editType:"editTodoItem",
           changedTask: { ...item, name: text },
         });
       }
@@ -33,6 +34,7 @@ const TodoItem = ({ item, onAction }) => {
   const ToggleCompleteTodos = useCallback(() => {
     onAction({
       type: ACTION.EDIT_TODO,
+      editType:"editTodoItem",
       changedTask: { ...item, isComplete: !item.isComplete },
     });
   }, [item, onAction]);

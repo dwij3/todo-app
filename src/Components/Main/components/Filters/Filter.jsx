@@ -22,7 +22,7 @@ const Filters = ({ activeTodoCount, onAction, todoStatus, todosCount }) => {
   const handleTodoStatus = useCallback(
     (status) => {
       onAction({
-        type: ACTION.CHANGE_TODO_STATUS,
+        type: ACTION.UPDATE_FILTER,
         status,
       });
     },
@@ -44,16 +44,13 @@ const Filters = ({ activeTodoCount, onAction, todoStatus, todosCount }) => {
 
       <span className={styles.filterButton}>
         {config.map((btn) => {
-          console.log(btn);
           return (
-            <div key={btn.id}>
-              <Button
+              <Button key={btn.id}
                 className={`${styles.filter} ${todoStatus === btn.status ? highlightStatus : ''}`}
                 onClick={() => handleTodoStatus(btn.status)}
               >
                 {btn.status}
               </Button>
-            </div>
           );
         })}
       </span>

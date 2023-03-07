@@ -26,7 +26,8 @@ const AddTodo = ({ onAction, todosCount, activeTodoCount }) => {
 
   const ToggleCompletedTasks = useCallback(() => {
     onAction({
-      type: ACTION.TOGGLE,
+      type: ACTION.EDIT_TODO,
+      editType: "toggle"
     });
   }, [onAction]);
 
