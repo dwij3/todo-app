@@ -1,10 +1,10 @@
 import TodoItem from "./components/TodoItem";
 
-const TodoList = ({taskList,onAction}) => {
+const TodoList = ({todos,onAction}) => {
     return(
         <>
         {
-            taskList.map((task) => {
+            todos.map((task) => {
                 return <TodoItem key={task.id} item={task} onAction={onAction}/>
             })
         }

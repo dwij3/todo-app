@@ -1,8 +1,8 @@
 import { useCallback, useState } from 'react';
 import styles from './TodoItem.module.css';
 import { ACTION } from '../../../../constants';
-import EditableTodoName from './components/EditableTodoName';
-import DisplayTodoName from './components/TodoName';
+import EditableTodoName from './components/EditableTodoName/EditableTodoName';
+import DisplayTodoName from './components/TodoName/TodoName';
 
 const TodoItem = ({ item, onAction }) => {
   const [edit, setEdit] = useState(false);

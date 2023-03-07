@@ -2,7 +2,7 @@ import { useState, useCallback } from 'react';
 import styles from './AddTodo.module.css';
 import { ACTION } from '../../constants';
 
-const AddTodo = ({ onAction, todosLength, activeTodoCount }) => {
+const AddTodo = ({ onAction, todosCount, activeTodoCount }) => {
   const [text, setText] = useState('');
 
   const handleInputChange = useCallback((e) => {
@@ -30,7 +30,7 @@ const AddTodo = ({ onAction, todosLength, activeTodoCount }) => {
     });
   }, [onAction]);
 
-  const selectToggleClass = todosLength > 0 ? styles.showElement : styles.hideElement;
+  const selectToggleClass = todosCount > 0 ? styles.showElement : styles.hideElement;
   const toggleColor = styles.toggleColor;
   return (
     <div className={styles.inputContainer}>

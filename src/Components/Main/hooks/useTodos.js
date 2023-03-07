@@ -1,9 +1,9 @@
 import { useState, useEffect, useMemo, useCallback } from 'react';
 import { ACTION, FILTER_STATUS } from '../constants';
-import  useTodoFilter  from './useTodoStatus';
+import useTodoFilter from './useTodoFilter';
 
 const useTodo = () => {
-  const [todos, settodos] = useState(() => {
+  const [todos, setTodo] = useState(() => {
     const savedTodos = localStorage.getItem('todos');
     if (savedTodos) {
       return JSON.parse(savedTodos);
@@ -18,11 +18,11 @@ const useTodo = () => {
   }, [todos]);
 
   const activeTodoCount = useMemo(() => todos.filter((todo) => todo.isComplete === false).length, [todos]);
-  const todosLength = useMemo(() => todos.length, [todos.length]);
+  const todosCount = useMemo(() => todos.length, [todos.length]);
 
   const handleAddTodo = useCallback(
     (todoName) => {
-      settodos((todos) => {
+      setTodo((todos) => {
         return [
           ...todos,
           {
@@ -37,39 +37,31 @@ const useTodo = () => {
     [changeTodoStatus]
   );
 
-  const handleDeleteTodo = useCallback((todoId) => {
-    settodos((todos) => todos.filter((todo) => todo.id !== todoId));
+  const handleDeleteTodo = useCallback((todoIds) => {
+    setTodo((todos) =>
+      todos.filter((todo) => {
+        return !todoIds.includes(todo.id);
+      })
+    );
   }, []);
 
-  const handleChangeTodo = useCallback((changedTodo) => {
-    settodos((todos) => {
-      const updatedtodos = todos.map((todo) => {
-        if (todo.id === changedTodo.id) {
-          return changedTodo;
-        } else {
-          return todo;
+  const handleEditTodo = useCallback((editType , todoList) => {
+      setTodo( (todos) => todos.map((todo) => {
+        if(editType === ACTION.EDIT_TODO){
+          if(todo.id === todoList.id){
+            return todoList;
+          }else{
+            return todo;
+          }
         }
-      });
-      return updatedtodos;
-    });
-  }, []);
-
-  const toggleTodoSelection = useCallback(() => {
-    settodos((todos) => {
-      const updatedtodos = todos.map((task) => {
-        return {
-          ...task,
-          isComplete: !(activeTodoCount === 0),
-        };
-      });
-
-      return updatedtodos;
-    });
+        else{
+            return {
+              ...todo,
+              isComplete: !(activeTodoCount === 0),
+            };
+        }
+      }));
   }, [activeTodoCount]);
-
-  const deleteCompletedTodo = useCallback(() => {
-    settodos((todos) => todos.filter((todo) => todo.isComplete === false));
-  }, []);
 
   const filteredtodo = todos.filter((task) => {
     if (todoStatus === FILTER_STATUS.ALL) return true;
@@ -84,19 +76,24 @@ const useTodo = () => {
         break;
 
       case ACTION.DELETE_TODO:
-        handleDeleteTodo(action.id);
+        handleDeleteTodo([action.id]);
         break;
 
       case ACTION.EDIT_TODO:
-        handleChangeTodo(action.changedTask);
+        handleEditTodo(ACTION.EDIT_TODO ,action.changedTask);
         break;
 
       case ACTION.TOGGLE:
-        toggleTodoSelection();
+        handleEditTodo(ACTION.TOGGLE);
         break;
 
       case ACTION.DELETE_COMPLETED_TODOS:
-        deleteCompletedTodo();
+        const completedTodos = todos
+          .filter((todo) => todo.isComplete === true)
+          .map((todo) => {
+            return todo.id;
+          });
+        handleDeleteTodo(completedTodos);
         break;
 
       case ACTION.CHANGE_TODO_STATUS:
@@ -108,7 +105,7 @@ const useTodo = () => {
     }
   };
 
-  return { onAction, filteredtodo, todosLength , activeTodoCount , todoStatus};
+  return {onAction, filteredtodo, todosCount, activeTodoCount, todoStatus};
 };
 
 export default useTodo;

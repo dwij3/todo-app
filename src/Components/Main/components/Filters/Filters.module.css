@@ -19,6 +19,7 @@
 
 .filterButton {
   padding: 10px;
+  display: flex;
 }
 
 
@@ -56,12 +57,11 @@
   font-family: 'Helvetica neue';
   font-weight: 300;
   cursor: pointer;
-  padding-right: 10px;
-  border-bottom: 1px ridge transparent;
+  text-decoration: underline transparent;
 }
 
 .clearCompleted:hover {
-  border-bottom: 1px ridge #f7ebea;
+  text-decoration: underline;
 }
 
 .showElement {

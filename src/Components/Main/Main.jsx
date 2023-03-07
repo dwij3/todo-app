@@ -5,18 +5,18 @@ import styles from './Main.module.css';
 import useTodo from './hooks/useTodos';
 
 const Main = () => {
-  const { onAction, filteredtodo, todosLength, activeTodoCount, todoStatus } = useTodo();
+  const { onAction, filteredtodo:todo, todosCount, activeTodoCount, todoStatus } = useTodo();
 
   return (
     <div className={styles.container}>
-      <AddTodo onAction={onAction} todosLength={todosLength} activeTodoCount={activeTodoCount} />
-      <TodoList taskList={filteredtodo} onAction={onAction} />
-      {todosLength > 0 ? (
+      <AddTodo onAction={onAction} todosCount={todosCount} activeTodoCount={activeTodoCount} />
+      <TodoList todos={todo} onAction={onAction} />
+      {todosCount > 0 ? (
         <Filters
           activeTodoCount={activeTodoCount}
           onAction={onAction}
           todoStatus={todoStatus}
-          todosLength={todosLength}
+          todosCount={todosCount}
         />
       ) : null}
     </div>
