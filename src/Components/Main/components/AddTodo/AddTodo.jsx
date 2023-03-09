@@ -11,13 +11,11 @@ const AddTodo = ({ onAction, totalCount, activeTodoCount }) => {
 
   const handleAddInput = useCallback(
     (e) => {
-      if (e.key === 'Enter') {
-        if (text !== '') {
+      if (e.key === 'Enter' && text) {
           onAction({
             type: ACTION.ADD_TODO,
             text: text,
           });
-        }
         setText('');
       }
     },

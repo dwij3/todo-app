@@ -1,4 +1,4 @@
-const DisplayTodoName = ({ onActive , todo , todoStyle , completedTodoStyle}) => {
+const TodoName = ({ onActive , todo , todoStyle , completedTodoStyle}) => {
     return  (
       <div className={`${todoStyle} ${(todo.isComplete) ? completedTodoStyle : ""}`} onDoubleClick={onActive}>
         {' '}
@@ -7,4 +7,4 @@ const DisplayTodoName = ({ onActive , todo , todoStyle , completedTodoStyle}) =>
     );
   };
 
-  export default DisplayTodoName;
+  export default TodoName;

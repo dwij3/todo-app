@@ -2,7 +2,7 @@ import { useCallback, useState } from 'react';
 import styles from './TodoItem.module.css';
 import { ACTION } from '../../../../constants';
 import EditableTodoName from './components/editableTodoName';
-import DisplayTodoName from './components/displayTodoName';
+import TodoName from './components/todoName';
 
 const TodoItem = ({ item, onAction }) => {
   const [edit, setEdit] = useState(false);
@@ -74,7 +74,7 @@ const TodoItem = ({ item, onAction }) => {
           todoStyle={styles.item}
         />
       ) : (
-        <DisplayTodoName
+        <TodoName
           onActive={handleEditMode}
           todo={item}
           todoStyle={styles.item}
