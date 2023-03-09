@@ -1,0 +1,71 @@
+.filterList {
+  height: 40px;
+  width: 550px;
+  box-sizing: border-box;
+  font-family: 'Helvetica neue';
+  font-weight: 300;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fefefe;
+  padding: 10px 15px;
+  color: #777777;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 8px 0 -3px #f6f6f6, 0 9px 1px -3px rgba(0, 0, 0, 0.2),
+    0 16px 0 -6px #f6f6f6, 0 17px 2px -6px rgba(0, 0, 0, 0.2);
+  border-top: 1px solid #e6e6e6;
+}
+
+.filterButton {
+  padding: 10px;
+  display: flex;
+}
+
+.filter {
+  font-family: 'Helvetica neue';
+  font-weight: 300;
+  background: none;
+  margin: 0 5px;
+  font-size: 0.8em;
+  color: #777777;
+  border: 1px ridge transparent;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.filter:hover {
+  border: 1px ridge #f7ebea;
+  background-color: transparent;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.activeTodos {
+  font-size: 1rem;
+}
+
+.clearCompleted {
+  background: none;
+  border: none;
+  color: #777777;
+  font-family: 'Helvetica neue';
+  font-weight: 300;
+  cursor: pointer;
+  text-decoration: underline transparent;
+}
+
+.clearCompleted:hover {
+  text-decoration: underline;
+}
+
+.showElement {
+  visibility: visible;
+}
+
+.hideElement {
+  visibility: hidden;
+}
+
+.highlightStatus {
+  border: 1px ridge #f6c6c2;
+  border-radius: 5px;
+}

@@ -1,0 +1,57 @@
+.inputContainer {
+  width: 550px;
+  height: 56px;
+  border-bottom: 1px solid #e6e6e6;
+  background-color: white;
+  display: flex;
+}
+
+.inputField {
+  flex: 1;
+  border: none;
+  color: #4D4D4D;
+  height: 80%;
+  align-self: center;
+  font-family: 'Helvetica neue';
+  font-size: 1.3rem;
+  padding-left: 10px;
+  font-weight: 300;
+}
+
+.inputField:focus {
+  outline: none;
+}
+
+.selectToggle {
+  width: 8%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: matrix(0,1,-1,0,0,0);
+  color: #737373 ;
+  font-size:  1.8rem;
+  user-select: none;
+}
+
+.toggleColor{
+  color: #e6e6e6;
+}
+
+.selectToggle:hover {
+  cursor: pointer;
+}
+
+.showElement {
+  visibility: visible;
+}
+
+.hideElement {
+  visibility: hidden;
+}
+
+::placeholder{
+  font-style: italic;
+  font-size: 1.5rem;
+	font-weight: 300;
+	color: #e6e6e6;
+}

@@ -1,0 +1,83 @@
+.showList {
+  display: flex;
+  width: 550px;
+  min-height: 55px;
+  background-color: white;
+  align-items: center;
+  border-bottom: 0.2px solid #e6e6e6;
+  font-family: 'Helvetica neue';
+  word-wrap: break-word;
+  overflow: visible;
+  color: #4d4d4d;
+  border-top: 1px solid #e6e6e6;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  width: 90%;
+  align-self: stretch;
+  font-size: 1.3rem;
+  font-weight: 300;
+  word-wrap: break-word;
+  word-break: break-all;
+  padding: 0px 0px 0px 5px;
+  margin: 5px;
+  color: #4d4d4d;
+}
+
+.item:hover {
+  cursor: pointer;
+}
+
+.deleteButton {
+  color: #cc9a9a;
+  float: right;
+  background: none;
+  border: none;
+  font-size: 2em;
+  height: 100%;
+  padding: 0 20px;
+}
+
+.deleteButton:hover {
+  cursor: pointer;
+}
+
+.checkbox {
+  width: 8%;
+  text-align: center;
+  margin-right: 7px;
+}
+
+.checkboxRound {
+  width: 2em;
+  height: 2em;
+  background-color: white;
+  border-radius: 50%;
+  vertical-align: middle;
+  border: 1px solid #ddd;
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.checkboxRound:checked {
+  background-image: url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%22-10%20-18%20100%20135%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2250%22%20fill%3D%22none%22%20stroke%3D%22%23bddad5%22%20stroke-width%3D%223%22/%3E%3Cpath%20fill%3D%22%235dc2af%22%20d%3D%22M72%2025L42%2071%2027%2056l-4%204%2020%2020%2034-52z%22/%3E%3C/svg%3E');
+  background-position: -10.5px -7.8px;
+  border-color: #5cc2ae;
+}
+
+.showElement {
+  visibility: visible;
+}
+
+.hideElement {
+  visibility: hidden;
+}
+
+.completedTodo {
+  color: #d9d9d9;
+  text-decoration: line-through;
+}
